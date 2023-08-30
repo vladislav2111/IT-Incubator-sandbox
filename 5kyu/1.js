@@ -1,12 +1,12 @@
 function calc(expr) {
-	let finalToParse = expr.replace(/\s+/g, "").split("");
+	let expressionToParse = expr.replace(/\s+/g, "").split("");
 
 	function peek() {
-		return finalToParse[0] || "";
+		return expressionToParse[0] || "";
 	}
 
 	function get() {
-		return finalToParse.shift();
+		return expressionToParse.shift();
 	}
 
 	function number() {
@@ -22,7 +22,7 @@ function calc(expr) {
 			return number();
 		} else if (peek() == "(") {
 			get(); // '('
-			let res = final();
+			let res = expression();
 			get(); // ')'
 			return res;
 		} else if (peek() == "-") {
@@ -44,7 +44,7 @@ function calc(expr) {
 		return res;
 	}
 
-	function final() {
+	function expression() {
 		let res = term();
 		while (peek() == "+" || peek() == "-") {
 			if (get() == "+") {
@@ -56,5 +56,5 @@ function calc(expr) {
 		return res;
 	}
 
-	return final();
+	return expression();
 }
