@@ -56,5 +56,5 @@ function calc(expr) {
 		return res;
 	}
 
-
+	return final();
 }
