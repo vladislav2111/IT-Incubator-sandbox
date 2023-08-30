@@ -1,12 +1,12 @@
 function calc(expr) {
-	let expression = expr.replace(/\s+/g, "").split("");
+	let finalToParse = expr.replace(/\s+/g, "").split("");
 
 	function peek() {
-		return expression[0] || "";
+		return finalToParse[0] || "";
 	}
 
 	function get() {
-		return expression.shift();
+		return finalToParse.shift();
 	}
 
 	function number() {
