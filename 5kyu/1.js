@@ -10,11 +10,11 @@ function calc(expr) {
 	}
 
 	function number() {
-		let res = get();
+		let result = get();
 		while ((peek() >= "0" && peek() <= "9") || peek() == ".") {
-			res += get();
+			result += get();
 		}
-		return parseFloat(res);
+		return parseFloat(result);
 	}
 
 	function factor() {
@@ -22,9 +22,9 @@ function calc(expr) {
 			return number();
 		} else if (peek() == "(") {
 			get(); // '('
-			let res = expression();
+			let result = expression();
 			get(); // ')'
-			return res;
+			return result;
 		} else if (peek() == "-") {
 			get();
 			return -factor();
@@ -33,27 +33,27 @@ function calc(expr) {
 	}
 
 	function term() {
-		let res = factor();
+		let result = factor();
 		while (peek() == "*" || peek() == "/") {
 			if (get() == "*") {
-				res *= factor();
+				result *= factor();
 			} else {
-				res /= factor();
+				result /= factor();
 			}
 		}
-		return res;
+		return result;
 	}
 
 	function expression() {
-		let res = term();
+		let result = term();
 		while (peek() == "+" || peek() == "-") {
 			if (get() == "+") {
-				res += term();
+				result += term();
 			} else {
-				res -= term();
+				result -= term();
 			}
 		}
-		return res;
+		return result;
 	}
 
 	return expression();
