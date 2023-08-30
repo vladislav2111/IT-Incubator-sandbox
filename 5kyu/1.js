@@ -17,7 +17,7 @@ function calc(expr) {
 		return parseFloat(res);
 	}
 
-	function fact() {
+	function factor() {
 		if (peek() >= "0" && peek() <= "9") {
 			return number();
 		} else if (peek() == "(") {
@@ -27,18 +27,18 @@ function calc(expr) {
 			return res;
 		} else if (peek() == "-") {
 			get();
-			return -fact();
+			return -factor();
 		}
 		return 0; 
 	}
 
 	function term() {
-		let res = fact();
+		let res = factor();
 		while (peek() == "*" || peek() == "/") {
 			if (get() == "*") {
-				res *= fact();
+				res *= factor();
 			} else {
-				res /= fact();
+				res /= factor();
 			}
 		}
 		return res;
